@@ -220,6 +220,125 @@ Add caching (Redis)
 
 Add unit & integration tests
 
+🧪 Postman Testing Steps
+
+All backend APIs were tested using Postman.
+Follow the steps below to test the APIs manually.
+
+1️⃣ Signup (Create User)
+
+POST /api/v1/auth/signup
+
+Headers
+
+Content-Type: application/json
+
+
+Body
+
+{
+  "name": "Postman User",
+  "email": "postman@test.com",
+  "password": "123456"
+}
+
+
+Expected
+
+Status: 201 Created
+
+JWT token returned
+
+2️⃣ Login
+
+POST /api/v1/auth/login
+
+Body
+
+{
+  "email": "postman@test.com",
+  "password": "123456"
+}
+
+
+Expected
+
+Status: 200 OK
+
+Copy the token from response
+
+3️⃣ Get Profile (Protected)
+
+GET /api/v1/me
+
+Headers
+
+Authorization: Bearer <JWT_TOKEN>
+
+
+Expected
+
+Logged-in user profile
+
+No password field in response
+
+4️⃣ Create Task
+
+POST /api/v1/tasks
+
+Headers
+
+Authorization: Bearer <JWT_TOKEN>
+Content-Type: application/json
+
+
+Body
+
+{
+  "title": "Test task from Postman"
+}
+
+5️⃣ Get Tasks (User-specific)
+
+GET /api/v1/tasks
+
+Headers
+
+Authorization: Bearer <JWT_TOKEN>
+
+
+Expected
+
+Only tasks created by the logged-in user
+
+6️⃣ Update Task
+
+PUT /api/v1/tasks/:id
+
+Body
+
+{
+  "completed": true
+}
+
+7️⃣ Delete Task
+
+DELETE /api/v1/tasks/:id
+
+Expected
+
+{
+  "message": "Task deleted successfully"
+}
+
+🔐 Security Validation
+
+Requests without token → 401 Unauthorized
+
+Cross-user task access → blocked
+
+JWT validation enforced on all protected routes
+
 🧪 Testing
 
 End-to-end tested via frontend UI
