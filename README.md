@@ -200,25 +200,7 @@ Protected routes (frontend & backend)
 
 CORS configured explicitly
 
-📈 How I Would Scale This for Production
-
-Use environment-based configs (dev / prod)
-
-Add refresh tokens
-
-Add pagination for tasks
-
-Add rate limiting & request validation
-
-Deploy using Docker
-
-Use Nginx as reverse proxy
-
-Enable database indexing
-
-Add caching (Redis)
-
-Add unit & integration tests
+For production deployment, I would use environment-based configurations (development and production) to manage secrets securely. The application would be containerized using Docker and deployed behind Nginx as a reverse proxy for better performance and load handling. CORS would be restricted to trusted domains only. Refresh tokens and rate limiting would be added to improve security. Database indexing would be enabled on frequently queried fields, and Redis caching would be introduced to reduce database load. Pagination would be implemented for large datasets, and unit plus integration tests would be added to ensure reliability.
 
 🧪 Postman Testing Steps
 
